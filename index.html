@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101e29">
+  <title>Kranthi Purimitla | Observability Engineer</title>
+  <meta name="description" content="Kranthi Purimitla’s engineering portfolio. Explore Dynatrace Extension 2.0 integrations, Python collectors, SNMP events, dashboards and public certification records.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <div class="wrap nav">
+      <a class="brand" href="#home"><span class="mark" aria-hidden="true">kp</span>Kranthi Purimitla</a>
+      <button class="menu" type="button" aria-controls="navlinks" aria-expanded="false" hidden>Menu</button>
+      <nav id="navlinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#experience">Experience</a>
+        <a href="#skills">Expertise</a><a href="#certifications">Credentials</a><a class="nav-contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="intro">
+          <p class="label light-label">Observability engineer</p>
+          <h1 id="hero-title">Kranthi<br>Purimitla<span>.</span></h1>
+          <p class="hero-copy">I build custom Dynatrace extensions that help teams see what’s happening across their storage, networks and applications.</p>
+          <div class="actions"><a class="button primary" href="#projects">Explore my work</a><a class="button secondary" href="https://www.linkedin.com/in/kranthipurimitla/">LinkedIn</a></div>
+        </div>
+        <figure class="profile">
+          <div class="portrait" role="img" aria-label="Portrait of Kranthi Purimitla">
+            <span class="initials" aria-hidden="true">KP</span>
+            <img src="profile.jpg" width="608" height="760" alt="" fetchpriority="high">
+          </div>
+          <figcaption>Bengaluru, India</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="highlight-band">
+      <dl class="wrap highlights" aria-label="Professional highlights">
+        <div><dt>Years of experience</dt><dd>5<span>+</span></dd></div>
+        <div><dt>Extension 2.0 integrations</dt><dd>15<span>+</span></dd></div>
+        <div><dt>Custom metrics delivered</dt><dd>50<span>+</span></dd></div>
+        <div><dt>DQL queries &amp; dashboards</dt><dd>20<span>+</span></dd></div>
+      </dl>
+    </div>
+    <section class="wrap section" id="projects" aria-labelledby="projects-title">
+      <div class="section-intro">
+        <div><p class="label">Selected work</p><h2 id="projects-title">Engineering projects</h2></div>
+        <p>I develop Python and YAML integrations on Dynatrace Extension 2.0. These projects cover the path from collecting a signal on ActiveGate to using it in a dashboard or an alert.</p>
+      </div>
+      <div class="projects">
+        <details class="case" open>
+          <summary><h3><span class="case-title">NetApp storage alerts from SNMP traps</span><span class="domain">Storage monitoring</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>A storage device could report a nearly full volume, but an isolated trap gave responders little context about which volume needed attention.</dd></div>
+                <div><dt>Architecture</dt><dd>NetApp EMS sends SNMP traps to an ActiveGate receiver. OpenPipeline extracts event fields, and Dynatrace uses them to create Davis events.</dd></div>
+                <div><dt>My implementation</dt><dd>I configured extraction and routing, investigated how events attached to entities, and added separate checks for offline volumes, utilization and selected hardware conditions.</dd></div>
+                <div><dt>Operational value</dt><dd>Storage teams can search the events in Dynatrace and use volume-level alerts to investigate capacity and availability issues.</dd></div>
+            </dl>
+            <p class="tech">Extension 2.0 · SNMP · ActiveGate · OpenPipeline · DQL</p>
+          </div>
+        </details>
+        <details class="case">
+          <summary><h3><span class="case-title">Genesys Cloud conversation analytics</span><span class="domain">Contact-center telemetry</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>Operations needed to compare conversations offered and connected across queues. The detail API returns results through an asynchronous job.</dd></div>
+                <div><dt>Architecture</dt><dd>A Python Extension 2.0 collector authenticates to Genesys Cloud with OAuth, submits an analytics job and polls for completion.</dd></div>
+                <div><dt>My implementation</dt><dd>I implemented cursor-based result collection and mapped conversation counts and timings to metrics with queue, media type and direction dimensions.</dd></div>
+                <div><dt>Operational value</dt><dd>Teams can compare queue activity in Dynatrace and investigate differences between offered and connected conversations alongside other service telemetry.</dd></div>
+            </dl>
+            <p class="tech">Extension 2.0 · Python · REST · OAuth 2.0</p>
+          </div>
+        </details>
+        <details class="case">
+          <summary><h3><span class="case-title">Pure1 volume capacity monitoring</span><span class="domain">Storage analytics</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>Provisioned capacity and physical usage came from different Pure1 endpoints, making it difficult to compare volumes consistently.</dd></div>
+                <div><dt>Architecture</dt><dd>A Python collector exchanges an RSA-signed JWT for an OAuth token. The signing key is retrieved from Dynatrace Credential Vault.</dd></div>
+                <div><dt>My implementation</dt><dd>I collected provisioned volume metadata and physical-capacity history at a supported resolution, then used DQL to calculate physical usage as a percentage of provisioned capacity.</dd></div>
+                <div><dt>Operational value</dt><dd>Storage engineers can sort volumes by percentage used and identify which volumes merit a closer look.</dd></div>
+            </dl>
+            <p class="tech">Pure1 REST API · Python · JWT · Credential Vault · DQL</p>
+          </div>
+        </details>
+        <details class="case">
+          <summary><h3><span class="case-title">VeloCloud SD-WAN link health</span><span class="domain">Network observability</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>Network teams needed to see which edge and link a performance signal belonged to when investigating an SD-WAN issue.</dd></div>
+                <div><dt>Architecture</dt><dd>A Python-based Dynatrace Extension 2.0 integration reads edge and link telemetry from the VeloCloud REST API.</dd></div>
+                <div><dt>My implementation</dt><dd>I developed the collection logic and monitoring configuration, then modeled edge and link dimensions so teams could compare individual connections.</dd></div>
+                <div><dt>Operational value</dt><dd>Network teams can review link-level metrics in Dynatrace alongside the application signals they are investigating.</dd></div>
+            </dl>
+            <p class="tech">VMware VeloCloud · Extension 2.0 · Python · REST</p>
+          </div>
+        </details>
+        <details class="case">
+          <summary><h3><span class="case-title">CyberArk credential retrieval</span><span class="domain">Platform integration</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>Authenticated monitoring could fail when a vault lookup matched no account or returned several possible accounts.</dd></div>
+                <div><dt>Architecture</dt><dd>Dynatrace Credential Vault requests account secrets from CyberArk for authenticated monitoring integrations.</dd></div>
+                <div><dt>My implementation</dt><dd>I traced lookup parameters across both systems, identified a case-sensitive mismatch, and worked with the identity team to distinguish missing matches from ambiguous account searches.</dd></div>
+                <div><dt>Operational value</dt><dd>The investigation isolated the cause of failed secret retrieval and gave the teams a specific account-matching condition to validate for rotation.</dd></div>
+            </dl>
+            <p class="tech">CyberArk · Dynatrace Credential Vault · Authentication</p>
+          </div>
+        </details>
+        <details class="case">
+          <summary><h3><span class="case-title">Synthetic monitoring and alert refinement</span><span class="domain">Alert quality</span><span class="toggle" aria-hidden="true"></span></h3></summary>
+          <div class="case-body">
+            <dl>
+                <div><dt>Challenge</dt><dd>Broad matching conditions caused synthetic failures outside the intended scope to trigger notifications.</dd></div>
+                <div><dt>Architecture</dt><dd>HTTP synthetic monitors feed Dynatrace alerting profiles. Tags, management zones and outage filters determine which events are routed.</dd></div>
+                <div><dt>My implementation</dt><dd>I configured the monitors and narrowed the profile to require all relevant tags, the intended management zone and the appropriate outage condition.</dd></div>
+                <div><dt>Operational value</dt><dd>The revised configuration targets the failures the team intended to investigate and supports reviewing the routing before enabling notifications.</dd></div>
+            </dl>
+            <p class="tech">Dynatrace Synthetic · Tags · Management zones · Alerting profiles</p>
+          </div>
+        </details>
+      </div>
+    </section>
+    <div class="tint">
+      <section class="wrap about section" id="about" aria-labelledby="about-title">
+        <div><p class="label">About</p><h2 id="about-title">From platform operations to extension development</h2></div>
+        <div class="prose">
+          <p>I started in Dynatrace administration, supporting enterprise applications and infrastructure. Today I work with engineering and operations teams to decide what to measure and build integrations for systems that need custom collection.</p>
+          <p>That can mean tracing an authentication failure on an ActiveGate, mapping a metric to the right entity, or writing a DQL query that helps a storage engineer decide which volume to investigate first.</p>
+        </div>
+      </section>
+    </div>
+    <section class="wrap section" id="experience" aria-labelledby="experience-title">
+      <p class="label">Experience</p><h2 id="experience-title">Where I’ve worked</h2>
+      <div class="jobs">
+        <article class="job"><div><p class="job-company">UST</p><p class="date">Apr 2024 – Present</p></div><div><h3>Observability Engineer / Custom Extension Developer</h3><p class="role">Developer II – Software Engineer</p><p>I design and maintain Python-based Extension 2.0 integrations, model metrics and entity topology, configure OpenPipeline and alerting, and troubleshoot ActiveGate, authentication and ingestion issues.</p></div></article>
+        <article class="job"><div><p class="job-company">Tech Mahindra</p><p class="date">Aug 2021 – Mar 2024</p></div><div><h3>Dynatrace Platform Engineer</h3><p class="role">Software Engineer</p><p>I supported enterprise banking observability through OneAgent and ActiveGate administration, monitoring configuration, dashboards, troubleshooting and incident support.</p></div></article>
+      </div>
+    </section>
+    <section class="wrap section expertise" id="skills" aria-labelledby="expertise-title">
+      <p class="label">Expertise</p><h2 id="expertise-title">Tools and technologies</h2>
+      <div class="skill-grid">
+        <article><h3>Dynatrace platform</h3><ul><li>Extension Framework 2.0 &amp; SDK</li><li>OneAgent and ActiveGate</li><li>APM and infrastructure monitoring</li><li>DQL, Grail and dashboards</li><li>OpenPipeline and Davis events</li><li>Synthetic monitoring and alerting</li></ul></article>
+        <article><h3>Development &amp; integrations</h3><ul><li>Python, YAML and JSON</li><li>REST APIs and asynchronous collection</li><li>OAuth 2.0, JWT and credentials</li><li>SNMP polling, MIBs and traps</li><li>Git, Azure DevOps and Postman</li><li>Custom metrics and entity topology</li></ul></article>
+        <article><h3>Systems &amp; troubleshooting</h3><ul><li>Storage, network and SaaS telemetry</li><li>Linux and Windows operations</li><li>ActiveGate and API troubleshooting</li><li>Event processing and alert quality</li><li>Exposure to Azure and Kubernetes monitoring</li><li>Stakeholder requirements and handover</li></ul></article>
+      </div>
+    </section>
+    <div class="tint">
+      <section class="wrap section" id="certifications" aria-labelledby="cert-title">
+        <div class="section-intro"><div><p class="label">Credentials</p><h2 id="cert-title">Certifications</h2></div><p>Each entry links to my public issuer record. Dates reflect the records checked on <time datetime="2026-11-22">22 November 2026</time>.</p></div>
+        <div class="cert-grid">
+          <article class="cert">
+            <p class="issuer">Dynatrace</p><h3>Dynatrace Associate</h3>
+            <p class="validity expired">Issued <time datetime="2024-09-30">30 Sep 2024</time> · <span data-expiry="2026-09-30">Expired</span> <time datetime="2026-09-30">30 Sep 2026</time></p>
+            <a href="https://www.credly.com/badges/7ac36188-a0de-4471-946e-411cad8d10bf/linked_in_profile" aria-label="View issuer record for Dynatrace Associate">View issuer record</a>
+          </article>
+          <article class="cert">
+            <p class="issuer">Microsoft</p><h3>Azure Administrator Associate (AZ-104)</h3>
+            <p class="validity expired">Issued <time datetime="2024-02-20">20 Feb 2024</time> · <span data-expiry="2025-02-21">Expired</span> <time datetime="2025-02-21">21 Feb 2025</time></p>
+            <a href="https://learn.microsoft.com/en-us/users/kranthip-8497/credentials/c434cdcd88097e40?ref=https%3A%2F%2Fwww.linkedin.com%2F" aria-label="View issuer record for Azure Administrator Associate (AZ-104)">View issuer record</a>
+          </article>
+          <article class="cert">
+            <p class="issuer">Anthropic</p><h3>Claude Certified Architect – Professional (CCAR-P)</h3>
+            <p class="validity">Issued <time datetime="2026-09-03">3 Sep 2026</time> · <span data-expiry="2027-09-03">Expires</span> <time datetime="2027-09-03">3 Sep 2027</time></p>
+            <a href="https://www.credly.com/badges/ba5df205-c447-4766-80e7-c96191c3bc37/linked_in_profile" aria-label="View issuer record for Claude Certified Architect – Professional (CCAR-P)">View issuer record</a>
+          </article>
+          <article class="cert">
+            <p class="issuer">Anthropic</p><h3>Claude Certified Architect – Foundations (CCAR-F)</h3>
+            <p class="validity">Issued <time datetime="2026-08-26">26 Aug 2026</time> · <span data-expiry="2027-08-26">Expires</span> <time datetime="2027-08-26">26 Aug 2027</time></p>
+            <a href="https://www.credly.com/badges/37ba52af-79bc-4495-9009-5ddad828d4f4/linked_in_profile" aria-label="View issuer record for Claude Certified Architect – Foundations (CCAR-F)">View issuer record</a>
+          </article>
+          <article class="cert">
+            <p class="issuer">Anthropic</p><h3>Claude Certified Developer – Foundations</h3>
+            <p class="validity">Issued <time datetime="2026-09-07">7 Sep 2026</time> · <span data-expiry="2027-09-07">Expires</span> <time datetime="2027-09-07">7 Sep 2027</time></p>
+            <a href="https://www.credly.com/badges/ecff9851-3ffd-4a28-8cb0-b932bf048144/linked_in_profile" aria-label="View issuer record for Claude Certified Developer – Foundations">View issuer record</a>
+          </article>
+          <article class="cert">
+            <p class="issuer">Anthropic</p><h3>Claude Certified Associate – Foundations</h3>
+            <p class="validity">Issued <time datetime="2026-08-31">31 Aug 2026</time> · <span data-expiry="2027-08-31">Expires</span> <time datetime="2027-08-31">31 Aug 2027</time></p>
+            <a href="https://www.credly.com/badges/80cc0e63-d71a-4f29-ba4b-d1a30afe984d/linked_in_profile" aria-label="View issuer record for Claude Certified Associate – Foundations">View issuer record</a>
+          </article>
+        </div>
+        <h3 class="awards-title">Recognition</h3>
+        <div class="awards">
+          <article><h4>USStar Award × 2</h4><p>For custom Dynatrace extension development and production issue resolution.</p></article>
+          <article><h4>BRAVO Award</h4><p>For troubleshooting and root-cause analysis.</p></article>
+          <article><h4>Dynatrace Extension Manager recognition</h4><p>International recognition for extension quality and technical innovation.</p></article>
+        </div>
+      </section>
+    </div>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-inner">
+        <div><p class="label light-label">Contact</p><h2 id="contact-title">Let’s get in touch.</h2><p>I’m interested in Dynatrace platform engineering, custom extension development and observability roles.</p></div>
+        <div class="contact-links"><a class="email" href="mailto:kranthikumarpurimitla@gmail.com">kranthikumarpurimitla@gmail.com</a><div><a href="https://www.linkedin.com/in/kranthipurimitla/">LinkedIn</a><a href="https://github.com/KranthiPurimitla">GitHub</a></div></div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap footer"><span>© <span id="year">2026</span> Kranthi Purimitla</span><a href="#home">Back to top</a></footer>
+</body>
+</html>
